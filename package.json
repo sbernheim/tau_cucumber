@@ -15,5 +15,10 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.0",
     "@babel/register": "^7.4.4"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "babel": "^6.23.0",
+    "cucumber": "^6.0.7"
   }
 }
