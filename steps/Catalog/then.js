@@ -1,25 +1,26 @@
-import { Then } from "cucumber";
+const { Then } = require('@cucumber/cucumber');
+//import { Then } from 'cucumber';
 import checkNoResultsError from "../../support/assertions/checkNoResultsError";
 import checkProducts from "../../support/assertions/checkProducts";
 import checkProductsContain from "../../support/assertions/checkProductsContain";
 import checkTitle from "../../support/assertions/checkTitle";
 
-Then("a no results error message is shown", () => {
-  checkNoResultsError();
+Then("a no results error message is shown", async () => {
+  await checkNoResultsError();
 });
 
-Then(/^(no )?products are listed$/, notListed => {
+Then(/^(no )?products are listed$/, async notListed => {
   if (notListed) {
-    checkProducts(false);
+    await checkProducts(false);
   } else {
-    checkProducts(true);
+    await checkProducts(true);
   }
 });
 
-Then(/^search results show products related to "(.*)"$/, keyword => {
-  checkProductsContain(keyword);
+Then(/^search results show products related to "(.*)"$/, async keyword => {
+  await checkProductsContain(keyword);
 });
 
-Then(/^the title of the page should be "(.*)"$/, title => {
-  checkTitle(title);
+Then(/^the title of the page should be "(.*)"$/, async title => {
+  await checkTitle(title);
 });

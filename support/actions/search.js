@@ -1,5 +1,5 @@
 import home from "../../pages/Home";
 
-export default keyword => {
-  home.search(keyword);
+export default async keyword => {
+  await home.search(keyword);
 };

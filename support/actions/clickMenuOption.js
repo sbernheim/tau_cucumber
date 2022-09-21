@@ -1,18 +1,21 @@
 import home from "../../pages/Home";
 
-export default option => {
+export default async option => {
   switch (option) {
     case "Women":
-      home.womenMenuOption.click();
+      const wOpt = await home.womenMenuOption;
+      await wOpt.click();
       break;
     case "Dresses":
-      home.dressesMenuOption.click();
+      const dOpt = await home.dressesMenuOption;
+      await dOpt.click();
       break;
     case "T-Shirts":
-      home.tshirtMenuOption.click();
+      const tOpt = await home.tshirtMenuOption;
+      await tOpt.click();
       break;
     default:
       console.log(`Invalid Option ${option}`);
   }
-  home.selectMenuOption(option);
+  //home.selectMenuOption(option);
 };

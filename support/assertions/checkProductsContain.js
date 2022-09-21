@@ -4,20 +4,18 @@ import assert from "assert";
 /**
  * @param {boolean} keyword search term to be present
  */
-export default keyword => {
-  const products = catalog.products;
-
-  products.forEach(product => {
-    const productText = product
-      .getText()
-      .trim()
-      .toLowerCase();
-
-    if (productText) {
-      assert(
-        productText.includes(keyword),
-        `Product ${product.getText()} does not contain ${keyword}`
-      );
-    }
+export default async keyword => {
+  // This await statement covers the entire chain map statements!
+  await catalog.products.map((p) => p.getText()).map((t) => {
+    assert(
+      t != undefined,
+      "Product element text is undefined!"
+    );
+    return t.trim().toLowerCase();
+  }).map((m) => {
+    assert(
+      m.includes(keyword.toLowerCase()),
+      `Product ${m} does not contain ${keyword}`
+    )
   });
 };

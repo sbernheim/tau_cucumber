@@ -27,18 +27,12 @@ class Home {
    *
    * @param {String} keyword Search term
    */
-  search(keyword) {
-    this.searchField.waitForDisplayed(2000);
-    this.searchField.setValue(keyword);
-    this.searchButton.click();
+  async search(keyword) {
+    await this.searchField.waitForDisplayed(2000);
+    await this.searchField.setValue(keyword);
+    await this.searchButton.click();
   }
 
-  /**
-   * Clicks a menu option
-   *
-   * @param {String} option - Name of the menu option to click
-   */
-  selectMenuOption(option) {}
 }
 
 module.exports = new Home();

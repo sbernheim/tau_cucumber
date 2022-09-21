@@ -25,11 +25,13 @@ class Login {
    * @param {String} email - Email
    * @param {String} password - Button
    */
-  signIn(email, password) {
-    this.emailInput.waitForDisplayed(5000);
-    this.emailInput.setValue(email);
-    this.passwordInput.setValue(password);
-    this.signInButton.click();
+  async signIn(email, password) {
+    console.log("SIGNIN EMAIL '" + email + "' PASS '" + password + "'");
+    await this.emailInput.waitForDisplayed(5000);
+    await this.emailInput.setValue(email);
+    await this.passwordInput.setValue(password);
+    await this.signInButton.waitForDisplayed(5000);
+    await this.signInButton.click();
   }
 }
 

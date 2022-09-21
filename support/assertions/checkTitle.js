@@ -3,9 +3,11 @@ import assert from "assert";
 /**
  * @param {boolean} title expected title
  */
-export default title => {
+export default async title => {
+  const foundTitle = await browser.getTitle();
+  console.log("FOUND TITLE : " + foundTitle);
   assert(
-    browser.getTitle() === title,
-    `Title, ${browser.getTitle()} not equal to ${title}`
+    foundTitle === title,
+    `Title, ${foundTitle} not equal to ${title}`
   );
 };

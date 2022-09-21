@@ -1,11 +1,12 @@
 import login from "../../pages/Login";
 import assert from "assert";
 
-export default errorMessage => {
-  const authErrorMessage = login.errorMessage;
+export default async errorMessage => {
+  const authErrorMessage = await login.errorMessage;
+  const errText = await authErrorMessage.getText();
 
   assert(
-    authErrorMessage.getText().includes(errorMessage),
-    `Error message, ${authErrorMessage.getText()} did not match ${errorMessage}`
+    await errText.includes(errorMessage),
+    `Error message, ${errText} did not match ${errorMessage}`
   );
 };
