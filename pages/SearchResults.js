@@ -1,5 +1,5 @@
 class SearchResults {
-    get searchResultsLinks() {
+    get resultLinks() {
         return $$(".LC20lb");
     }
 }

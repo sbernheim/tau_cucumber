@@ -7,18 +7,16 @@
 import assert from "assert";
 import results from "../../pages/SearchResults"
 
-export default async (links, keyword) => {
-    await results.searchResultsLinks.forEach( async (link) => {
-        const linkText = await link.getText();
-        console.log("LINK TEXT  : " + linkText);
-        if (linkText) {
-            const lowerText = await linkText.toLowerCase();
-            console.log("LOWER TEXT : " + lowerText);
+export default async (keyword) => {
+    await results.resultLinks
+        .map((r) => r.getText())
+        .filter((t) => t)
+        .map((t) => t.trim().toLowerCase())
+        .map((t) => {
+            console.log("MATCH TEXT : " + t);
             assert (
-                lowerText.includes(keyword),
-                "link text '" + lowerText + "' does not include keyword '" + keyword + "'"
+                t.includes(keyword),
+                "link text '" + t + "' does not include keyword '" + keyword + "'"
             );
-        }
-    });
-
+        });
 }

@@ -12,11 +12,11 @@ class Home {
     }
 
     async search(keyword) {
-        await inputField.waitForDisplayed(5000);
-        await inputField.click();
-        await inputField.setValue(keyword);
-        await submitButton.waitForDisplayed(5000);
-        await submitButton.click();
+        await this.inputField.waitForDisplayed(5000);
+        await this.inputField.click();
+        await this.inputField.setValue(keyword);
+        await this.submitButton.waitForDisplayed(5000);
+        await this.submitButton.click();
     }
 }
 
